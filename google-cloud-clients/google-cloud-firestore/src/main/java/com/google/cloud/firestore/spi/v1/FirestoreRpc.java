@@ -29,6 +29,7 @@ import com.google.firestore.v1.BeginTransactionResponse;
 import com.google.firestore.v1.CommitRequest;
 import com.google.firestore.v1.CommitResponse;
 import com.google.firestore.v1.ListCollectionIdsRequest;
+import com.google.firestore.v1.ListCollectionIdsResponse;
 import com.google.firestore.v1.ListDocumentsRequest;
 import com.google.firestore.v1.ListenRequest;
 import com.google.firestore.v1.ListenResponse;
@@ -69,4 +70,7 @@ public interface FirestoreRpc extends AutoCloseable, ServiceRpc {
 
   /** Returns a bi-directional watch stream. */
   BidiStreamingCallable<ListenRequest, ListenResponse> listenCallable();
+
+  /** Returns a list of collections IDs. */
+  UnaryCallable<ListCollectionIdsRequest, ListCollectionIdsResponse> listCollectionIdsCallable();
 }

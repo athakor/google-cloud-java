@@ -49,6 +49,7 @@ import com.google.firestore.v1.CommitRequest;
 import com.google.firestore.v1.CommitResponse;
 import com.google.firestore.v1.DatabaseRootName;
 import com.google.firestore.v1.ListCollectionIdsRequest;
+import com.google.firestore.v1.ListCollectionIdsResponse;
 import com.google.firestore.v1.ListDocumentsRequest;
 import com.google.firestore.v1.ListenRequest;
 import com.google.firestore.v1.ListenResponse;
@@ -198,6 +199,11 @@ public class GrpcFirestoreRpc implements FirestoreRpc {
   @Override
   public BidiStreamingCallable<ListenRequest, ListenResponse> listenCallable() {
     return firestoreStub.listenCallable();
+  }
+
+  @Override
+  public UnaryCallable<ListCollectionIdsRequest, ListCollectionIdsResponse> listCollectionIdsCallable() {
+    return firestoreStub.listCollectionIdsCallable();
   }
 
   // This class is needed solely to get access to protected method setInternalHeaderProvider()
