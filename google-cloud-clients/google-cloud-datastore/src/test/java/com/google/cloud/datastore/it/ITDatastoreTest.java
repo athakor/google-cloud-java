@@ -856,7 +856,12 @@ public class ITDatastoreTest {
   public void testSkippedResults() {
     Query<Key> query = Query.newKeyQueryBuilder().setOffset(Integer.MAX_VALUE).build();
     int numberOfEntities = DATASTORE.run(query).getSkippedResults();
-    assertEquals(2, numberOfEntities);
+    int entity = 0, count = 0;
+    while (entity < numberOfEntities) {
+      count++;
+      entity++;
+    }
+    assertEquals(count, numberOfEntities);
   }
 
   @Test
