@@ -15,11 +15,23 @@ Quickstart
 [//]: # ({x-version-update-start:google-cloud-bigquery:released})
 If you are using Maven, add this to your pom.xml file
 ```xml
-<dependency>
-  <groupId>com.google.cloud</groupId>
-  <artifactId>google-cloud-bigquery</artifactId>
-  <version>1.99.0</version>
-</dependency>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>libraries-bom</artifactId>
+        <version>2.7.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+       </dependency>
+     </dependencies>
+  </dependencyManagement>
+  
+  <dependency>
+     <groupId>com.google.cloud</groupId>
+     <artifactId>google-cloud-bigquery</artifactId>
+     <version>1.99.0</version>
+  </dependency>
 ```
 If you are using Gradle, add this to your dependencies
 ```Groovy
