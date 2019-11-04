@@ -22,10 +22,21 @@ Quickstart
 [//]: # ({x-version-update-start:google-cloud-nio:released})
 If you are using Maven, add this to your pom.xml file
 ```xml
+<dependencyManagement>
+ <dependencies>
+  <dependency>
+    <groupId>com.google.cloud</groupId>
+    <artifactId>libraries-bom</artifactId>
+    <version>2.7.1</version>
+    <type>pom</type>
+    <scope>import</scope>
+   </dependency>
+ </dependencies>
+</dependencyManagement>
+
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-nio</artifactId>
-  <version>0.117.0-alpha</version>
 </dependency>
 ```
 If you are using Gradle, add this to your dependencies
