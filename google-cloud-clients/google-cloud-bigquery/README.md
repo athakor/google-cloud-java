@@ -30,7 +30,6 @@ If you are using Maven, add this to your pom.xml file
   <dependency>
      <groupId>com.google.cloud</groupId>
      <artifactId>google-cloud-bigquery</artifactId>
-     <version>1.99.0</version>
   </dependency>
 ```
 If you are using Gradle, add this to your dependencies
