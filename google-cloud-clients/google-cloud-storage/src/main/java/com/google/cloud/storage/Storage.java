@@ -1024,6 +1024,7 @@ public interface Storage extends Service<StorageOptions> {
   class SignUrlOption implements Serializable {
 
     private static final long serialVersionUID = 7850569877451099267L;
+    private static final String STORAGE_URI_SCHEME = "https";
 
     private final Option option;
     private final Object value;
@@ -1123,15 +1124,15 @@ public interface Storage extends Service<StorageOptions> {
     }
 
     /**
-     * Use a different host name than the default host name 'https://storage.googleapis.com'. This
-     * must also include the scheme component of the URI. This option is particularly useful for
-     * developers to point requests to an alternate endpoint (e.g. a staging environment or sending
+     * Use a different host name than the default host name 'storage.googleapis.com'.
+     * This option is particularly useful for developers to point requests to an alternate endpoint (e.g. a staging environment or sending
      * requests through VPC). Note that if using this with the {@code withVirtualHostedStyle()}
      * method, you should omit the bucket name from the hostname, as it automatically gets prepended
      * to the hostname for virtual hosted-style URLs.
      */
     public static SignUrlOption withHostName(String hostName) {
-      return new SignUrlOption(Option.HOST_NAME, hostName);
+      return new SignUrlOption(Option.HOST_NAME,hostName.startsWith(STORAGE_URI_SCHEME) ?
+              hostName.replaceFirst("http[s]://","") : hostName);
     }
 
     /**
