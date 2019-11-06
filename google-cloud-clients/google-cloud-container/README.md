@@ -17,14 +17,14 @@ Quickstart
 ----------
 
 [//]: # ({x-version-update-start:google-cloud-container:released})
-Add this to your pom.xml file
+If you are using Maven with Bom, Add this to your pom.xml file.
 ```xml
 <dependencyManagement>
  <dependencies>
   <dependency>
     <groupId>com.google.cloud</groupId>
     <artifactId>libraries-bom</artifactId>
-    <version>2.7.1</version>
+    <version>2.8.0</version>
     <type>pom</type>
     <scope>import</scope>
    </dependency>
@@ -34,6 +34,14 @@ Add this to your pom.xml file
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-container</artifactId>
+</dependency>
+```
+If you are using Maven without Bom, Add this to your dependencies.
+```xml
+<dependency>
+  <groupId>com.google.cloud</groupId>
+  <artifactId>google-cloud-container</artifactId>
+  <version>0.117.0-beta</version>
 </dependency>
 ```
 If you are using Gradle, add this to your dependencies
