@@ -14,6 +14,10 @@
 
 package com.google.cloud.logging.v2.testing;
 
+import com.google.cloud.NoCredentials;
+import com.google.cloud.ServiceOptions;
+import com.google.cloud.logging.LoggingOptions;
+import com.google.cloud.logging.v2.LoggingSettings;
 import io.grpc.ManagedChannel;
 import io.grpc.Server;
 import io.grpc.inprocess.InProcessChannelBuilder;
@@ -32,6 +36,22 @@ public class LocalLoggingHelper {
     this.loggingImpl = new LocalLoggingImpl();
     this.server =
         InProcessServerBuilder.forName(address).addService(loggingImpl.bindService()).build();
+  }
+  /** Creates a {@code LocalLoggingHelper} object that listens to requests on the local machine. */
+  public static LocalLoggingHelper create() {
+    return new LocalLoggingHelper("dummy-address-for-testing");
+  }
+  /**
+   * Returns a {@link LoggingOptions} instance that sets the project id,credentials and retry
+   * setting to use the mock service.
+   */
+  public LoggingOptions getOptions() {
+    return LoggingOptions.newBuilder()
+        .setProjectId("test-project-id")
+        .setHost(LoggingSettings.getDefaultEndpoint())
+        .setCredentials(NoCredentials.getInstance())
+        .setRetrySettings(ServiceOptions.getDefaultRetrySettings())
+        .build();
   }
   /** Starts the in-memory service. */
   public void start() {
